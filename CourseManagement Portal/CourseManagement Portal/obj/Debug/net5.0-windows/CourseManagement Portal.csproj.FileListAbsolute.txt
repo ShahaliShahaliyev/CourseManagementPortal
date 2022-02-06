@@ -1,0 +1,30 @@
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\CourseManagement Portal.exe
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\CourseManagement Portal.deps.json
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\CourseManagement Portal.runtimeconfig.json
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\CourseManagement Portal.runtimeconfig.dev.json
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\CourseManagement Portal.dll
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\ref\CourseManagement Portal.dll
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\CourseManagement Portal.pdb
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.MainPage.resources
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.FormCourse.resources
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.Properties.Resources.resources
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement Portal.csproj.GenerateResource.cache
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement Portal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement Portal.AssemblyInfoInputs.cache
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement Portal.AssemblyInfo.cs
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement Portal.csproj.CoreCompileInputs.cache
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement Portal.dll
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\ref\CourseManagement Portal.dll
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement Portal.pdb
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement Portal.genruntimeconfig.cache
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.FormStudent.resources
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.FormTeacher.resources
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\System.Data.SqlClient.dll
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement Portal.csproj.CopyComplete
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement Portal.csproj.AssemblyReference.cache
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.FormComments.resources
