@@ -20,14 +20,14 @@ namespace CourseManagement_Portal
 
         public void CreateTeacher(TeacherClass teacherClass)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=.\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
+            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
 
             sqlConnection.Open();
 
-            SqlCommand cmd = new SqlCommand("insert into Teacher values(@name,@surname,@birthDate,@profession)",sqlConnection);
+            SqlCommand cmd = new SqlCommand("insert into Teacher values(@name,@surname,@birthDate,@profession)", sqlConnection);
             cmd.Parameters.AddWithValue("Name", teacherClass.Name);
-            cmd.Parameters.AddWithValue("Surname",teacherClass.Surname);
-            cmd.Parameters.AddWithValue("BirthDate",teacherClass.BirthDate);
+            cmd.Parameters.AddWithValue("Surname", teacherClass.Surname);
+            cmd.Parameters.AddWithValue("BirthDate", teacherClass.BirthDate);
             cmd.Parameters.AddWithValue("Profession", teacherClass.Profession);
 
             cmd.ExecuteNonQuery();
@@ -37,15 +37,17 @@ namespace CourseManagement_Portal
 
         private void btn_crtTeacher_Click(object sender, EventArgs e)
         {
-           TeacherClass teacherClass = new TeacherClass();
-            teacherClass.Name =tbx_crtTeacherName.Text;
+            TeacherClass teacherClass = new TeacherClass();
+            teacherClass.Name = tbx_crtTeacherName.Text;
             teacherClass.Surname = tbx_crtTeacherSur.Text;
-            teacherClass.BirthDate =Convert.ToDateTime(dtp_crtTeacherBD.Value);
-            teacherClass.Profession = tbx_crtTeacherProf.Text;
+            teacherClass.BirthDate = Convert.ToDateTime(dtp_crtTeacherBD.Value);
+            teacherClass.Profession = cb_crtTeacher.Text;
 
             CreateTeacher(teacherClass);
 
             MessageBox.Show("Teacher added!");
+
+            dgw_Teacher.DataSource = ReadAllTeacher();
         }
 
         public List<TeacherClass> ReadAllTeacher()
@@ -54,7 +56,7 @@ namespace CourseManagement_Portal
 
             sqlConnection.Open();
 
-            SqlCommand cmd = new SqlCommand("select * from Teacher",sqlConnection);
+            SqlCommand cmd = new SqlCommand("select * from Teacher", sqlConnection);
 
             SqlDataReader sqlDataReader = cmd.ExecuteReader();
             List<TeacherClass> list = new List<TeacherClass>();
@@ -63,7 +65,7 @@ namespace CourseManagement_Portal
                 TeacherClass teacherClass = new TeacherClass();
 
                 teacherClass.Id = Convert.ToInt32(sqlDataReader["ID"]);
-                teacherClass.Name=sqlDataReader.GetString("Name");
+                teacherClass.Name = sqlDataReader.GetString("Name");
                 teacherClass.Surname = sqlDataReader.GetString("Surname");
                 teacherClass.BirthDate = sqlDataReader.GetDateTime("BirthDate");
                 teacherClass.Profession = sqlDataReader.GetString("Profession");
@@ -77,31 +79,25 @@ namespace CourseManagement_Portal
 
             return list;
         }
-
-        private void btn_rdTeacher_Click(object sender, EventArgs e)
-        {
-            dgw_Teacher.DataSource = ReadAllTeacher();
-        }
-
         private void dgw_Teacher_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             tbx_updtTeacherName.Text = dgw_Teacher.CurrentRow.Cells[1].Value.ToString();
             tbx_updtTeacherSur.Text = dgw_Teacher.CurrentRow.Cells[2].Value.ToString();
-            dtp_updtTeacherBD.Value =Convert.ToDateTime(dgw_Teacher.CurrentRow.Cells[3].Value);
-            tbx_updtTeacherProf.Text = dgw_Teacher.CurrentRow.Cells[4].Value.ToString();
+            dtp_updtTeacherBD.Value = Convert.ToDateTime(dgw_Teacher.CurrentRow.Cells[3].Value);
+            cb_updtTeacher.Text = dgw_Teacher.CurrentRow.Cells[4].Value.ToString();
         }
 
-        public void TeacherUpdate(TeacherClass teacherClass,int id)
+        public void TeacherUpdate(TeacherClass teacherClass, int id)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=.\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
+            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
 
             sqlConnection.Open();
 
-            SqlCommand cmd = new SqlCommand("update Teacher set Name=@name,Surname=@surname,BirthDate=@birthDate,Profession=@profession where Id=@id",sqlConnection);
-           cmd.Parameters.AddWithValue("Id", id);
+            SqlCommand cmd = new SqlCommand("update Teacher set Name=@name,Surname=@surname,BirthDate=@birthDate,Profession=@profession where Id=@id", sqlConnection);
+            cmd.Parameters.AddWithValue("Id", id);
             cmd.Parameters.AddWithValue("Name", teacherClass.Name);
-            cmd.Parameters.AddWithValue("Surname",teacherClass.Surname);
-            cmd.Parameters.AddWithValue("BirthDate",teacherClass.BirthDate);
+            cmd.Parameters.AddWithValue("Surname", teacherClass.Surname);
+            cmd.Parameters.AddWithValue("BirthDate", teacherClass.BirthDate);
             cmd.Parameters.AddWithValue("Profession", teacherClass.Profession);
 
             cmd.ExecuteNonQuery();
@@ -113,23 +109,33 @@ namespace CourseManagement_Portal
 
         private void btn_updtTeacher_Click(object sender, EventArgs e)
         {
-            TeacherClass teacherClass = new TeacherClass();
+            DialogResult dialogResult = MessageBox.Show("Selected Teacher will be UPDATED!\r\nDo you want to contunie?", "Update",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.OK)
+            {
+                TeacherClass teacherClass = new TeacherClass();
 
-            teacherClass.Name = tbx_updtTeacherName.Text;
-            teacherClass.Surname = tbx_updtTeacherSur.Text;
-            teacherClass.BirthDate=Convert.ToDateTime(dtp_updtTeacherBD.Value);
-            teacherClass.Profession= tbx_updtTeacherProf.Text;
+                teacherClass.Name = tbx_updtTeacherName.Text;
+                teacherClass.Surname = tbx_updtTeacherSur.Text;
+                teacherClass.BirthDate = Convert.ToDateTime(dtp_updtTeacherBD.Value);
+                teacherClass.Profession = cb_updtTeacher.Text;
 
-            TeacherUpdate(teacherClass,(int)dgw_Teacher.CurrentRow.Cells[0].Value);
+                TeacherUpdate(teacherClass, (int)dgw_Teacher.CurrentRow.Cells[0].Value);
+
+                dgw_Teacher.DataSource = ReadAllTeacher();
+            }
+            else
+            {
+            }
         }
 
         public void DeleteTeacher(int id)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=.\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
+            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
 
             sqlConnection.Open();
 
-            SqlCommand cmd = new SqlCommand("delete Teacher where Id=@id",sqlConnection);
+            SqlCommand cmd = new SqlCommand("delete Teacher where Id=@id", sqlConnection);
             cmd.Parameters.AddWithValue("Id", id);
 
             cmd.ExecuteNonQuery();
@@ -139,20 +145,53 @@ namespace CourseManagement_Portal
 
         private void btn_dltTeacher_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult= MessageBox.Show("Are you sure?","Delete",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
-            if(dialogResult == DialogResult.OK)
+            DialogResult dialogResult = MessageBox.Show("Selected Teacher will be DELETED!" +
+                "\r\n Do you want to continue?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.OK)
             {
                 TeacherClass teacherClass = new TeacherClass();
                 int id = (int)dgw_Teacher.CurrentRow.Cells[0].Value;
 
                 DeleteTeacher(id);
 
-                MessageBox.Show("Student delete!");
+                MessageBox.Show("Teacher deleted!");
+
+                dgw_Teacher.DataSource = ReadAllTeacher();
             }
             else
             {
-
             }
         }
+
+        private void FormTeacher_Load(object sender, EventArgs e)
+        {
+            dgw_Teacher.DataSource = ReadAllTeacher();
+
+            cb_crtTeacher.Items.Clear();
+            SqlDataReader reader;
+            sqlConnection.Open();
+            cmd.Connection = sqlConnection;
+            cmd.CommandText = "select Name from Course";
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+               cb_crtTeacher.Items.Add(reader["Name"].ToString());
+            }
+            sqlConnection.Close();
+
+            cb_updtTeacher.Items.Clear();
+            SqlDataReader reader1;
+            sqlConnection.Open();
+            cmd.Connection = sqlConnection;
+            cmd.CommandText = "select Name from Course";
+            reader1 = cmd.ExecuteReader();
+            while (reader1.Read())
+            {
+                cb_updtTeacher.Items.Add(reader1["Name"].ToString());
+            }
+            sqlConnection.Close();
+        }
+        SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
+        SqlCommand cmd = new SqlCommand();
     }
 }

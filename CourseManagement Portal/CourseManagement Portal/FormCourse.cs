@@ -43,12 +43,14 @@ namespace CourseManagement_Portal
             courseClass.Name = tbx_crtCourseName.Text;
             courseClass.Duration = int.Parse(tbx_crtCourseDur.Text);
             courseClass.Price =Convert.ToInt32(nud_crtCoursePrice.Value);
-            courseClass.CreationTime = Convert.ToDateTime(dtp_crtCourseCT.Value);
-            courseClass.ModificationTime = Convert.ToDateTime(dtp_crtCourseMT.Value);
+            courseClass.CreationTime =DateTime.Today;
+            courseClass.ModificationTime = DateTime.Today.AddMonths(courseClass.Duration);
 
             CreateCourse(courseClass);
 
             MessageBox.Show("Course Added!");
+
+            dgw_Course.DataSource = ReadAllCourse();
         }
 
 
@@ -67,10 +69,11 @@ namespace CourseManagement_Portal
                 CourseClass courseClass = new CourseClass();
                 courseClass.Id = (int)reader.GetInt32("Id");
                 courseClass.Name = reader.GetString("Name");
+                courseClass.Price = reader.GetInt32("Price");
                 courseClass.Duration = (int)reader.GetInt32("Duration");
                 courseClass.CreationTime = reader.GetDateTime("CreationTime");
                 courseClass.ModificationTime = reader.GetDateTime("ModificationTime");
-
+                                
                 list.Add(courseClass);
             }
 
@@ -80,19 +83,11 @@ namespace CourseManagement_Portal
 
             return list;
         }
-
-        private void btn_rdCourse_Click(object sender, EventArgs e)
-        {
-            dgw_Course.DataSource = ReadAllCourse();
-        }
-
         private void dgw_Course_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             tbx_updtCourseName.Text = dgw_Course.CurrentRow.Cells[1].Value.ToString();
             tbx_updtCourseDur.Text = dgw_Course.CurrentRow.Cells[2].Value.ToString();
             nud_updtCoursePrice.Value = (int)dgw_Course.CurrentRow.Cells[3].Value;
-            dtp_updtCourseCT.Value = (DateTime)dgw_Course.CurrentRow.Cells[4].Value;
-            dtp_updtCourseMT.Value = (DateTime)dgw_Course.CurrentRow.Cells[5].Value;
         }
 
         public void CourseUpdate(CourseClass courseClass, int id)
@@ -119,17 +114,27 @@ namespace CourseManagement_Portal
 
         private void btn_updtCourse_Click(object sender, EventArgs e)
         {
-            CourseClass courseClass = new CourseClass();
+            DialogResult dialogResult =MessageBox.Show("Selected Course will be UPDATED!\r\nDo you want to contunie?", "Update",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            courseClass.Name = tbx_updtCourseName.Text;
-            courseClass.Duration = int.Parse(tbx_updtCourseDur.Text);
-            courseClass.Price = Convert.ToInt32(nud_updtCoursePrice.Value);
-            courseClass.CreationTime = Convert.ToDateTime(dtp_updtCourseCT.Value);
-            courseClass.ModificationTime = Convert.ToDateTime(dtp_updtCourseMT.Value);
+            if (dialogResult == DialogResult.OK)
+            {
+                CourseClass courseClass = new CourseClass();
 
-            CourseUpdate(courseClass, (int)dgw_Course.CurrentRow.Cells[0].Value);
+                courseClass.Name = tbx_updtCourseName.Text;
+                courseClass.Duration = int.Parse(tbx_updtCourseDur.Text);
+                courseClass.Price = Convert.ToInt32(nud_updtCoursePrice.Value);
+                courseClass.CreationTime = Convert.ToDateTime((DateTime)dgw_Course.CurrentRow.Cells[4].Value);
+                courseClass.ModificationTime =DateTime.Today;
+
+                CourseUpdate(courseClass, (int)dgw_Course.CurrentRow.Cells[0].Value);
+
+                dgw_Course.DataSource = ReadAllCourse();
+            }
+            else
+            {
+            }
         }
-
 
         public void CourseDelete(int id)
         {
@@ -149,7 +154,8 @@ namespace CourseManagement_Portal
 
         private void btn_dltCourse_Click(object sender, EventArgs e)
         {
-           DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+           DialogResult dialogResult = MessageBox.Show("Selected Course will be DELETED!" +
+               "\r\n Do you want to continue?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
            
             if (dialogResult == DialogResult.OK)
             {
@@ -160,10 +166,17 @@ namespace CourseManagement_Portal
                 CourseDelete(id);
 
                 MessageBox.Show("Course deleted!");
+
+                dgw_Course.DataSource = ReadAllCourse();
             }
             else
             {
             }
+        }
+
+        private void FormCourse_Load(object sender, EventArgs e)
+        {
+            dgw_Course.DataSource = ReadAllCourse();
         }
     }
 }

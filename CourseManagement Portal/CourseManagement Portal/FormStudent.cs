@@ -18,20 +18,19 @@ namespace CourseManagement_Portal
             InitializeComponent();
         }
 
-
         public void CreateStudent(StudentClass studentClass)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=.\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
+            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
 
             sqlConnection.Open();
 
-            SqlCommand cmd = new SqlCommand("insert into Student values(@name,@surname,@birthdate,@creationTime,@modificationTime)",sqlConnection);
+            SqlCommand cmd = new SqlCommand("insert into Student values(@name,@surname,@birthdate,@creationTime,@modificationTime)", sqlConnection);
 
             cmd.Parameters.AddWithValue("Name", studentClass.Name);
             cmd.Parameters.AddWithValue("Surname", studentClass.Surname);
-            cmd.Parameters.AddWithValue("BirthDate",studentClass.BirthDate);
-            cmd.Parameters.AddWithValue("CreationTime",studentClass.CreationTime); 
-            cmd.Parameters.AddWithValue("ModificationTime",studentClass.ModificationTime);
+            cmd.Parameters.AddWithValue("BirthDate", studentClass.BirthDate);
+            cmd.Parameters.AddWithValue("CreationTime", studentClass.CreationTime);
+            cmd.Parameters.AddWithValue("ModificationTime", studentClass.ModificationTime);
 
             cmd.ExecuteNonQuery();
 
@@ -45,12 +44,14 @@ namespace CourseManagement_Portal
             studentClass.Name = tbx_crtStudentName.Text;
             studentClass.Surname = tbx_crtStudentSur.Text;
             studentClass.BirthDate = Convert.ToDateTime(dtp_crtStudentBD.Value);
-            studentClass.CreationTime = Convert.ToDateTime(dtp_crtStudentCT.Value);
-            studentClass.ModificationTime= Convert.ToDateTime(dtp_crtStudentMT.Value);
+            studentClass.CreationTime = DateTime.Today;
+            studentClass.ModificationTime = DateTime.Today;
 
             CreateStudent(studentClass);
 
             MessageBox.Show("Student added!");
+
+            dgw_Student.DataSource = ReadAllStudents();
         }
 
         public List<StudentClass> ReadAllStudents()
@@ -84,33 +85,22 @@ namespace CourseManagement_Portal
 
         }
 
-        private void btn_rdStudent_Click(object sender, EventArgs e)
-        {
-            dgw_Student.DataSource = ReadAllStudents();
-        }
-
-
-
-
         private void dgw_Student_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             tbx_updtStudentName.Text = dgw_Student.CurrentRow.Cells[1].Value.ToString();
             tbx_updtStudentSur.Text = dgw_Student.CurrentRow.Cells[2].Value.ToString();
             dtp_updtStudentBD.Value = (DateTime)dgw_Student.CurrentRow.Cells[3].Value;
-            dtp_updtStudentCT.Value = (DateTime)dgw_Student.CurrentRow.Cells[4].Value;
-            dtp_updtStudentMT.Value = (DateTime)dgw_Student.CurrentRow.Cells[5].Value;
         }
 
-
-        public void UpdateStudent(StudentClass studentClass,int id)
+        public void UpdateStudent(StudentClass studentClass, int id)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=.\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
+            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
 
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("update Student set Name=@name,Surname=@surname,BirthDate=@birthdate,CreationTime=@creationTime,ModificationTime=@modificationTime where Id=@id", sqlConnection);
 
-            cmd.Parameters.AddWithValue("Id",id);
+            cmd.Parameters.AddWithValue("Id", id);
             cmd.Parameters.AddWithValue("Name", studentClass.Name);
             cmd.Parameters.AddWithValue("Surname", studentClass.Surname);
             cmd.Parameters.AddWithValue("BirthDate", studentClass.BirthDate);
@@ -119,7 +109,7 @@ namespace CourseManagement_Portal
 
             cmd.ExecuteNonQuery();
 
-            sqlConnection.Close ();
+            sqlConnection.Close();
 
             MessageBox.Show("Student updated!");
 
@@ -127,36 +117,45 @@ namespace CourseManagement_Portal
 
         private void btn_updtStudent_Click(object sender, EventArgs e)
         {
-            StudentClass studentClass = new StudentClass();
-            studentClass.Name = tbx_updtStudentName.Text;
-            studentClass.Surname = tbx_updtStudentSur.Text;
-            studentClass.BirthDate = Convert.ToDateTime(dtp_updtStudentBD.Value);
-            studentClass.CreationTime = Convert.ToDateTime(dtp_updtStudentCT.Value);
-            studentClass.ModificationTime = Convert.ToDateTime(dtp_updtStudentMT.Value);
+            DialogResult dialogResult = MessageBox.Show("Selected Student will be UPDATED!\r\nDo you want to contunie?", "Update",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.OK)
+            {
+                StudentClass studentClass = new StudentClass();
+                studentClass.Name = tbx_updtStudentName.Text;
+                studentClass.Surname = tbx_updtStudentSur.Text;
+                studentClass.BirthDate = Convert.ToDateTime(dtp_updtStudentBD.Value);
+                studentClass.CreationTime = (DateTime)dgw_Student.CurrentRow.Cells[4].Value;
+                studentClass.ModificationTime = DateTime.Today;
 
-            UpdateStudent(studentClass, (int)dgw_Student.CurrentRow.Cells[0].Value);
+                UpdateStudent(studentClass, (int)dgw_Student.CurrentRow.Cells[0].Value);
+
+                dgw_Student.DataSource = ReadAllStudents();
+            }
+            else
+            {
+            }
         }
 
         public void StudentDelete(int id)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=.\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
+            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
 
             sqlConnection.Open();
 
-            SqlCommand cmd = new SqlCommand("delete from Student where @id=Id",sqlConnection);
+            SqlCommand cmd = new SqlCommand("delete from Student where @id=Id", sqlConnection);
 
-            cmd.Parameters.AddWithValue("Id",id);
+            cmd.Parameters.AddWithValue("Id", id);
 
             cmd.ExecuteNonQuery();
 
             sqlConnection.Close();
-
         }
-
 
         private void btn_dltStudent_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure?","Delete",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
+            DialogResult dialogResult = MessageBox.Show("Selected Student will be DELETED!" +
+                "\r\nDo you want to continue?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.OK)
             {
                 StudentClass studentClass = new StudentClass();
@@ -166,11 +165,17 @@ namespace CourseManagement_Portal
                 StudentDelete(id);
 
                 MessageBox.Show("Student deleted!");
+
+                dgw_Student.DataSource = ReadAllStudents();
             }
             else
             {
-
             }
+        }
+
+        private void FormStudent_Load(object sender, EventArgs e)
+        {
+            dgw_Student.DataSource = ReadAllStudents();
         }
     }
 }

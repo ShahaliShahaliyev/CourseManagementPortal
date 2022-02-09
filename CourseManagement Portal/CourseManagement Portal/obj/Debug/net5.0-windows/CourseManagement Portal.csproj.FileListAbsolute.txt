@@ -27,4 +27,8 @@ C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\Cou
 C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement Portal.csproj.CopyComplete
 C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement Portal.csproj.AssemblyReference.cache
-C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.FormComments.resources
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.ThePlanOfCourse.resources
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.CommentForm.resources
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\az\CourseManagement Portal.resources.dll
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.MainPage.az.resources
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\az\CourseManagement Portal.resources.dll
