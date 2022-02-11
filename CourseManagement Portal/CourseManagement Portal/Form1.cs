@@ -46,5 +46,10 @@ namespace CourseManagement_Portal
            CommentForm commentForm = new CommentForm();
             commentForm.ShowDialog();
         }
+
+        private void MainPage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

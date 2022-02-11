@@ -75,6 +75,11 @@
             // nud_crtCoursePrice
             // 
             this.nud_crtCoursePrice.Location = new System.Drawing.Point(158, 74);
+            this.nud_crtCoursePrice.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.nud_crtCoursePrice.Name = "nud_crtCoursePrice";
             this.nud_crtCoursePrice.Size = new System.Drawing.Size(224, 23);
             this.nud_crtCoursePrice.TabIndex = 2;
@@ -195,6 +200,11 @@
             // nud_updtCoursePrice
             // 
             this.nud_updtCoursePrice.Location = new System.Drawing.Point(158, 74);
+            this.nud_updtCoursePrice.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.nud_updtCoursePrice.Name = "nud_updtCoursePrice";
             this.nud_updtCoursePrice.Size = new System.Drawing.Size(224, 23);
             this.nud_updtCoursePrice.TabIndex = 5;

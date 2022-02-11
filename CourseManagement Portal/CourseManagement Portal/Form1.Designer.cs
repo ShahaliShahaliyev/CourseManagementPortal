@@ -39,15 +39,16 @@
             // 
             // btn_none
             // 
+            resources.ApplyResources(this.btn_none, "btn_none");
             this.btn_none.BackColor = System.Drawing.Color.Lime;
             this.btn_none.CausesValidation = false;
-            resources.ApplyResources(this.btn_none, "btn_none");
             this.btn_none.ForeColor = System.Drawing.Color.Red;
             this.btn_none.Name = "btn_none";
             this.btn_none.UseVisualStyleBackColor = false;
             // 
             // btn_course
             // 
+            this.btn_course.AllowDrop = true;
             this.btn_course.BackColor = System.Drawing.Color.DarkRed;
             this.btn_course.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.btn_course, "btn_course");
@@ -78,9 +79,9 @@
             // 
             // btn_OC
             // 
+            resources.ApplyResources(this.btn_OC, "btn_OC");
             this.btn_OC.BackColor = System.Drawing.Color.Chocolate;
             this.btn_OC.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.btn_OC, "btn_OC");
             this.btn_OC.ForeColor = System.Drawing.Color.White;
             this.btn_OC.Name = "btn_OC";
             this.btn_OC.UseVisualStyleBackColor = false;
@@ -88,9 +89,9 @@
             // 
             // button1
             // 
+            resources.ApplyResources(this.button1, "button1");
             this.button1.BackColor = System.Drawing.Color.Crimson;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.button1, "button1");
             this.button1.ForeColor = System.Drawing.Color.Transparent;
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = false;
@@ -107,9 +108,10 @@
             this.Controls.Add(this.btn_none);
             this.Controls.Add(this.btn_course);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
             this.Name = "MainPage";
+            this.Load += new System.EventHandler(this.MainPage_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

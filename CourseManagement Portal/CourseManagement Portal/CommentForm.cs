@@ -46,7 +46,7 @@ namespace CourseManagement_Portal
          
             SqlConnection connection2 = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
             connection2.Open();
-            SqlCommand cmd2 = new SqlCommand ($"select CourseName from StartedCourses", connection2);
+            SqlCommand cmd2 = new SqlCommand ("select CourseName from StartedCourses", connection2);
             SqlDataReader reader2 = cmd2.ExecuteReader();
             while (reader2.Read())
             {
