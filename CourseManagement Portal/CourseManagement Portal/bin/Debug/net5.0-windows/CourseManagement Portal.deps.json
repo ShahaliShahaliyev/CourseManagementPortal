@@ -12,6 +12,11 @@
         },
         "runtime": {
           "CourseManagement Portal.dll": {}
+        },
+        "resources": {
+          "az/CourseManagement Portal.resources.dll": {
+            "locale": "az"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/3.1.0": {},

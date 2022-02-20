@@ -58,6 +58,9 @@
             // 
             // dgw_Teacher
             // 
+            this.dgw_Teacher.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgw_Teacher.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgw_Teacher.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dgw_Teacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -83,6 +86,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.groupBox2.Controls.Add(this.cb_updtTeacher);
             this.groupBox2.Controls.Add(this.btn_dltTeacher);
@@ -181,6 +186,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.groupBox1.Controls.Add(this.cb_crtTeacher);
             this.groupBox1.Controls.Add(this.tbx_crtTeacherSur);
@@ -200,6 +207,7 @@
             // 
             // cb_crtTeacher
             // 
+            this.cb_crtTeacher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_crtTeacher.FormattingEnabled = true;
             this.cb_crtTeacher.Location = new System.Drawing.Point(165, 101);
             this.cb_crtTeacher.Name = "cb_crtTeacher";
@@ -208,6 +216,7 @@
             // 
             // tbx_crtTeacherSur
             // 
+            this.tbx_crtTeacherSur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbx_crtTeacherSur.Location = new System.Drawing.Point(165, 46);
             this.tbx_crtTeacherSur.Name = "tbx_crtTeacherSur";
             this.tbx_crtTeacherSur.Size = new System.Drawing.Size(221, 23);
@@ -215,6 +224,7 @@
             // 
             // dtp_crtTeacherBD
             // 
+            this.dtp_crtTeacherBD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtp_crtTeacherBD.Location = new System.Drawing.Point(165, 72);
             this.dtp_crtTeacherBD.Name = "dtp_crtTeacherBD";
             this.dtp_crtTeacherBD.Size = new System.Drawing.Size(221, 23);
@@ -222,6 +232,8 @@
             // 
             // tbx_crtTeacherName
             // 
+            this.tbx_crtTeacherName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbx_crtTeacherName.Location = new System.Drawing.Point(165, 18);
             this.tbx_crtTeacherName.Name = "tbx_crtTeacherName";
             this.tbx_crtTeacherName.Size = new System.Drawing.Size(221, 23);
@@ -286,7 +298,6 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
             this.Name = "FormTeacher";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormTeacher";

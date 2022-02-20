@@ -39,9 +39,9 @@
             // 
             // btn_none
             // 
-            resources.ApplyResources(this.btn_none, "btn_none");
             this.btn_none.BackColor = System.Drawing.Color.Lime;
             this.btn_none.CausesValidation = false;
+            resources.ApplyResources(this.btn_none, "btn_none");
             this.btn_none.ForeColor = System.Drawing.Color.Red;
             this.btn_none.Name = "btn_none";
             this.btn_none.UseVisualStyleBackColor = false;
@@ -49,9 +49,9 @@
             // btn_course
             // 
             this.btn_course.AllowDrop = true;
+            resources.ApplyResources(this.btn_course, "btn_course");
             this.btn_course.BackColor = System.Drawing.Color.DarkRed;
             this.btn_course.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.btn_course, "btn_course");
             this.btn_course.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btn_course.Name = "btn_course";
             this.btn_course.UseVisualStyleBackColor = false;
@@ -59,9 +59,9 @@
             // 
             // btn_student
             // 
+            resources.ApplyResources(this.btn_student, "btn_student");
             this.btn_student.BackColor = System.Drawing.Color.SeaGreen;
             this.btn_student.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.btn_student, "btn_student");
             this.btn_student.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btn_student.Name = "btn_student";
             this.btn_student.UseVisualStyleBackColor = false;
@@ -108,6 +108,7 @@
             this.Controls.Add(this.btn_none);
             this.Controls.Add(this.btn_course);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "MainPage";
             this.Load += new System.EventHandler(this.MainPage_Load);
             this.ResumeLayout(false);

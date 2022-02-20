@@ -60,10 +60,6 @@
   <metadata name="btn_none.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btn_none.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btn_none.Font" type="System.Drawing.Font, System.Drawing">
     <value>Britannic Bold, 27.75pt</value>
@@ -284,10 +280,10 @@
     <value>TopLeft</value>
   </data>
   <data name="btn_none.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 45</value>
+    <value>0, 0</value>
   </data>
   <data name="btn_none.Size" type="System.Drawing.Size, System.Drawing">
-    <value>596, 98</value>
+    <value>800, 98</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btn_none.TabIndex" type="System.Int32, mscorlib">
@@ -296,6 +292,10 @@
   <data name="btn_none.Text" xml:space="preserve">
     <value>Course Management Portal</value>
   </data>
+  <data name="btn_none.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btn_none.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
@@ -310,6 +310,9 @@
   </data>
   <data name="&gt;&gt;btn_none.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="btn_course.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="btn_course.Font" type="System.Drawing.Font, System.Drawing">
     <value>Rockwell, 20.25pt, style=Bold</value>
@@ -400,6 +403,9 @@
   </data>
   <data name="&gt;&gt;btn_course.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="btn_student.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="btn_student.Font" type="System.Drawing.Font, System.Drawing">
     <value>Rockwell, 20.25pt, style=Bold</value>
@@ -510,7 +516,7 @@
     <value>3</value>
   </data>
   <data name="button3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+    <value>Right</value>
   </data>
   <data name="button3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -609,7 +615,7 @@
     <value>2</value>
   </data>
   <data name="btn_OC.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+    <value>Right</value>
   </data>
   <data name="btn_OC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Rockwell, 20.25pt, style=Bold</value>
@@ -714,7 +720,7 @@
     <value>1</value>
   </data>
   <data name="button1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+    <value>Bottom</value>
   </data>
   <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Rockwell, 20.25pt, style=Bold</value>

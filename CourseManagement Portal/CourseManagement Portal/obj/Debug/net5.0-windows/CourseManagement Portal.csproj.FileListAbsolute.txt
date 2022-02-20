@@ -3,7 +3,6 @@ C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\Cou
 C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\CourseManagement Portal.runtimeconfig.json
 C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\CourseManagement Portal.runtimeconfig.dev.json
 C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\CourseManagement Portal.dll
-C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\ref\CourseManagement Portal.dll
 C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\CourseManagement Portal.pdb
 C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.MainPage.resources
 C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.FormCourse.resources
@@ -32,3 +31,4 @@ C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\Cou
 C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\bin\Debug\net5.0-windows\az\CourseManagement Portal.resources.dll
 C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\CourseManagement_Portal.MainPage.az.resources
 C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\az\CourseManagement Portal.resources.dll
+C:\Users\Shahali\source\repos\CourseManagementPortal\CourseManagement Portal\CourseManagement Portal\obj\Debug\net5.0-windows\refint\CourseManagement Portal.dll

@@ -45,6 +45,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.GreenYellow;
             this.groupBox1.Controls.Add(this.nud_SCD);
             this.groupBox1.Controls.Add(this.cb_SCC);
@@ -134,6 +136,9 @@
             // 
             // dgw_OngoingCourse
             // 
+            this.dgw_OngoingCourse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgw_OngoingCourse.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgw_OngoingCourse.BackgroundColor = System.Drawing.Color.LightBlue;
             this.dgw_OngoingCourse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -141,6 +146,7 @@
             this.dgw_OngoingCourse.Location = new System.Drawing.Point(6, 81);
             this.dgw_OngoingCourse.Name = "dgw_OngoingCourse";
             this.dgw_OngoingCourse.RowTemplate.Height = 25;
+            this.dgw_OngoingCourse.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dgw_OngoingCourse.Size = new System.Drawing.Size(782, 365);
             this.dgw_OngoingCourse.TabIndex = 1;
             // 
@@ -148,12 +154,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgw_OngoingCourse);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
             this.Name = "ThePlanOfCourse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ThePlanOfCourse";
