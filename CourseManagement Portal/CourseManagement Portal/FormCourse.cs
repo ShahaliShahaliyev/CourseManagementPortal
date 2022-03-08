@@ -13,10 +13,10 @@ namespace CourseManagement_Portal
 {
     public partial class FormCourse : Form
     {
+        SqlConnection sqlConnection = new SqlConnection(@"Server=.\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
+
         public void CreateCourse(CourseClass courseClass)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("insert into Course values(@name,@duration,@price,@creationTime,@modificationTime)", sqlConnection);
@@ -42,9 +42,9 @@ namespace CourseManagement_Portal
 
             courseClass.Name = tbx_crtCourseName.Text;
             courseClass.Duration = int.Parse(tbx_crtCourseDur.Text);
-            courseClass.Price =Convert.ToInt32(nud_crtCoursePrice.Value);
-            courseClass.CreationTime =DateTime.Today;
-            courseClass.ModificationTime = DateTime.Today.AddMonths(courseClass.Duration);
+            courseClass.Price = Convert.ToInt32(nud_crtCoursePrice.Value);
+            courseClass.CreationTime = DateTime.Today;
+            courseClass.ModificationTime = DateTime.Today;
 
             CreateCourse(courseClass);
 
@@ -53,11 +53,8 @@ namespace CourseManagement_Portal
             dgw_Course.DataSource = ReadAllCourse();
         }
 
-
         public List<CourseClass> ReadAllCourse()
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("Select * from Course", sqlConnection);
@@ -73,7 +70,7 @@ namespace CourseManagement_Portal
                 courseClass.Duration = (int)reader.GetInt32("Duration");
                 courseClass.CreationTime = reader.GetDateTime("CreationTime");
                 courseClass.ModificationTime = reader.GetDateTime("ModificationTime");
-                                
+
                 list.Add(courseClass);
             }
 
@@ -92,8 +89,6 @@ namespace CourseManagement_Portal
 
         public void CourseUpdate(CourseClass courseClass, int id)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("update  Course set Name=@name,Duration=@duration,Price=@price,CreationTime=@creationTime,ModificationTime=@modificationTime where Id=@id", sqlConnection);
@@ -114,7 +109,7 @@ namespace CourseManagement_Portal
 
         private void btn_updtCourse_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult =MessageBox.Show("Selected Course will be UPDATED!\r\nDo you want to contunie?", "Update",
+            DialogResult dialogResult = MessageBox.Show("Selected Course will be UPDATED!\r\nDo you want to contunie?", "Update",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (dialogResult == DialogResult.OK)
@@ -125,7 +120,7 @@ namespace CourseManagement_Portal
                 courseClass.Duration = int.Parse(tbx_updtCourseDur.Text);
                 courseClass.Price = Convert.ToInt32(nud_updtCoursePrice.Value);
                 courseClass.CreationTime = Convert.ToDateTime((DateTime)dgw_Course.CurrentRow.Cells[4].Value);
-                courseClass.ModificationTime =DateTime.Today;
+                courseClass.ModificationTime = DateTime.Today;
 
                 CourseUpdate(courseClass, (int)dgw_Course.CurrentRow.Cells[0].Value);
 
@@ -138,8 +133,6 @@ namespace CourseManagement_Portal
 
         public void CourseDelete(int id)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("Delete from Course where Id = @id", sqlConnection);
@@ -148,15 +141,13 @@ namespace CourseManagement_Portal
             cmd.ExecuteNonQuery();
 
             sqlConnection.Close();
-
-
         }
 
         private void btn_dltCourse_Click(object sender, EventArgs e)
         {
-           DialogResult dialogResult = MessageBox.Show("Selected Course will be DELETED!" +
-               "\r\n Do you want to continue?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-           
+            DialogResult dialogResult = MessageBox.Show("Selected Course will be DELETED!" +
+                "\r\n Do you want to continue?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
             if (dialogResult == DialogResult.OK)
             {
                 CourseClass courseClass = new CourseClass();
@@ -177,6 +168,30 @@ namespace CourseManagement_Portal
         private void FormCourse_Load(object sender, EventArgs e)
         {
             dgw_Course.DataSource = ReadAllCourse();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (textBox1.Text.Length >= 2)
+            {
+                dgw_Course.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                DataView view = new DataView();
+
+                adapter = new SqlDataAdapter($"select * from Course where Name like '{textBox1.Text}%'", sqlConnection);
+
+                sqlConnection.Open();
+                adapter.Fill(ds);
+                view = new DataView(ds.Tables[0]);
+                dgw_Course.DataSource = view;
+                sqlConnection.Close();
+            }
+            else if (textBox1.Text.Length <= 1)
+            {
+                dgw_Course.DataSource = ReadAllCourse();
+            }
         }
     }
 }

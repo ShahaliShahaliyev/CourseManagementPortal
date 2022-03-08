@@ -13,109 +13,213 @@ namespace CourseManagement_Portal
 {
     public partial class CommentForm : Form
     {
+        SqlConnection sqlConnection = new SqlConnection(@"Server=.\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
+
         public CommentForm()
         {
             InitializeComponent();
         }
-        string Attendance;
+
+        private void CommentForm_Load(object sender, EventArgs e)
+        {
+
+            dgw_Comments.DataSource = ReadAllComments();
+
+            sqlConnection.Open();
+            cb_ACC.Items.Clear();
+
+            SqlCommand command = new SqlCommand("select Name from Course");
+
+            command.Connection = sqlConnection;
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                cb_ACC.Items.Add(reader["Name"].ToString());
+            }
+            sqlConnection.Close();
+        }
+        public int GetCourseId(string name)
+        {
+            int id = 0;
+
+            SqlCommand command = new SqlCommand($"select Id from Course where Name = '{name}'", sqlConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+
+            reader.Close();
+
+            sqlConnection.Close();
+
+            return id;
+        }
+
+        public int GetGroupId(string name)
+        {
+            int id = 0;
+
+            sqlConnection.Open();
+
+            SqlCommand command = new SqlCommand($"select GroupId from NewGroup where GroupName = '{name}'", sqlConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+            reader.Close();
+
+            sqlConnection.Close();
+
+            return id;
+        }
+
+        public int GetStudentId(string name)
+        {
+            int id = 0;
+
+            sqlConnection.Open();
+
+            SqlCommand command = new SqlCommand($"select Id from Student where Name = '{name}'", sqlConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+            reader.Close();
+
+            sqlConnection.Close();
+
+            return id;
+        }
+
+        public void AddComment(CommentClass commentClass)
+        {
+            sqlConnection.Open();
+
+            SqlCommand command =
+                new SqlCommand(
+                    "insert into Comment values(@courseId,@groupId,@studentId,@lesson,@date,@attendance,@comment)",
+                    sqlConnection);
+
+            command.Parameters.AddWithValue("CourseId", commentClass.CourseId);
+            command.Parameters.AddWithValue("GroupId", commentClass.GroupId);
+            command.Parameters.AddWithValue("StudentId", commentClass.StudentId);
+            command.Parameters.AddWithValue("Lesson", commentClass.Lesson);
+            command.Parameters.AddWithValue("Date", commentClass.Date);
+            command.Parameters.AddWithValue("Attendance", commentClass.Attendance);
+            command.Parameters.AddWithValue("Comment", commentClass.Comment);
+
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
+        private void btn_AddComment_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+
+            CommentClass commentClass = new CommentClass();
+            commentClass.CourseId = GetCourseId(cb_ACC.Text);
+            commentClass.GroupId = GetGroupId(cb_CommentGroup.Text);
+            commentClass.StudentId = GetStudentId(cb_ACS.Text);
+            commentClass.Lesson = tbx_LessonComment.Text;
+            commentClass.Date = dtp_ACD.Value;
+            commentClass.Attendance = Attendance;
+            commentClass.Comment = rtb_ACComment.Text;
+
+            AddComment(commentClass);
+
+            sqlConnection.Close();
+
+            dgw_Comments.DataSource = ReadAllComments();
+        }
+
+         string Attendance;
 
         private void rb_Iedb_CheckedChanged(object sender, EventArgs e)
         {
-            Attendance = "İştirak edib";
+            Attendance = "In Lesson";
         }
 
         private void rb_Ietmb_CheckedChanged(object sender, EventArgs e)
         {
-            Attendance = "İştirak etməyib";
+            Attendance = "Not In Lesson";
         }
 
-        private void CommentForm_Load(object sender, EventArgs e)
+        public List<CommentClassDgw> ReadAllComments()
         {
-            dgw_Comments.DataSource = ReadAllComments();
+            sqlConnection.Open();
 
-            cb_ACS.Items.Clear();
-            SqlConnection connection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("select StudentName from StartedCourses", connection);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                cb_ACS.Items.Add(reader["StudentName"]).ToString();
-            }
-            connection.Close();
-         
-            SqlConnection connection2 = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-            connection2.Open();
-            SqlCommand cmd2 = new SqlCommand ("select CourseName from StartedCourses", connection2);
-            SqlDataReader reader2 = cmd2.ExecuteReader();
-            while (reader2.Read())
-            {
-                cb_ACC.Items.Add(reader2["CourseName"].ToString());
-            }
-            connection2.Close();
-        }
+            SqlCommand command = new SqlCommand("select c.Name as CourseName,ng.GroupName,s.Name as StudentName,s.Surname as StudentSurname,Lesson,cm.Date,cm.Attendance,cm.Comment from Comment cm "+
+            "join Course c on cm.CourseId = c.Id " +
+            "join NewGroup ng on cm.GroupId = ng.GroupId "+
+            "join Student s on cm.StudentId = s.Id",sqlConnection);
 
-        public void AddComment(CommentStudentClass commentClass)
-        {
-            SqlConnection connection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-            connection.Open();
-
-            SqlCommand command = new SqlCommand("insert into CommentForStudent values(@student,@course,@lesson,@date,@attendance,@comment)", connection);
-            command.Parameters.AddWithValue("Student", commentClass.Student);
-            command.Parameters.AddWithValue("Course", commentClass.Course);
-            command.Parameters.AddWithValue("Lesson", commentClass.Lesson);
-            command.Parameters.AddWithValue("Date", commentClass.Date);
-            command.Parameters.AddWithValue("Attendance",commentClass.Attendance);
-            command.Parameters.AddWithValue("Comment", commentClass.Comment);
-
-            command.ExecuteNonQuery();
-            connection.Close();
-        }
-           
-        private void btn_AddComment_Click(object sender, EventArgs e)
-        {
-            CommentStudentClass commentClass = new CommentStudentClass();
-           
-            commentClass.Student = cb_ACS.Text.ToString();
-            commentClass.Course =cb_ACC.Text.ToString();
-            commentClass.Date = Convert.ToDateTime(dtp_ACD.Value);
-            commentClass.Lesson = tbx_LessonComment.Text.ToString();
-            commentClass.Attendance = Attendance.ToString();
-            commentClass.Comment = rtb_ACComment.Text.ToString();
-
-            AddComment(commentClass);
-
-            MessageBox.Show("Comment Added!");
-
-            dgw_Comments.DataSource = ReadAllComments();
-        }
-
-        public List<CommentStudentClass> ReadAllComments()
-        {
-            SqlConnection connection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-            connection.Open();
-            SqlCommand command = new SqlCommand("select * from CommentForStudent", connection);
-
+            List<CommentClassDgw> list = new List<CommentClassDgw>();
             SqlDataReader reader = command.ExecuteReader();
-            List<CommentStudentClass> list = new List<CommentStudentClass>();
+
             while (reader.Read())
             {
-                CommentStudentClass commentClass = new CommentStudentClass();
+                CommentClassDgw commentClassDgw = new CommentClassDgw();
 
-                commentClass.Student = reader.GetString("Student");
-                commentClass.Course = reader.GetString("Course");
-                commentClass.Lesson = reader.GetString("Lesson");
-                commentClass.Date = reader.GetDateTime("Date");
-                commentClass.Attendance = reader.GetString("Attendance");
-                commentClass.Comment = reader.GetString("Comment");
+                commentClassDgw.CourseName = reader.GetString(0);
+                commentClassDgw.GroupName = reader.GetString(1);
+                commentClassDgw.StudentName = reader.GetString(2);
+                commentClassDgw.StudentSurname = reader.GetString(3);
+                commentClassDgw.Lesson = reader.GetString(4);
+                commentClassDgw.Date = reader.GetDateTime(5);
+                commentClassDgw.Attendance = reader.GetString(6);
+                commentClassDgw.Comment = reader.GetString(7);
 
-                list.Add(commentClass);
+                list.Add(commentClassDgw);
             }
-            connection.Close();
 
             reader.Close();
 
+            sqlConnection.Close();
             return list;
+        }
+
+        private void cb_CommentGroup_Click(object sender, EventArgs e)
+        {
+            cb_CommentGroup.Items.Clear();
+
+            string name = cb_ACC.Text;
+
+            AddStudentToGroups addStudent = new AddStudentToGroups();
+            addStudent.GetGroupName(name,cb_CommentGroup);
+        }
+
+
+        public void GetStudentName(string name,ComboBox comboBox)
+        {
+            sqlConnection.Open();
+
+            SqlCommand command = new SqlCommand($"select s.Name,ng.GroupName from AddStudentToGroup ag " +
+            $"join Student s on ag.StudentId = s.Id " +
+            $"join NewGroup ng on ag.GroupId = ng.GroupId where ng.GroupName = '{name}'", sqlConnection);
+
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                comboBox.Items.Add(reader.GetString(0));
+            }
+
+            reader.Close();
+
+            sqlConnection.Close();
+        }
+        private void cb_ACS_Click(object sender, EventArgs e)
+        {
+            cb_ACS.Items.Clear();
+
+            string name = cb_CommentGroup.Text;
+
+            GetStudentName(name,cb_ACS);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace CourseManagement_Portal
 {
     public partial class FormTeacher : Form
     {
+        SqlConnection sqlConnection = new SqlConnection(@"Server=.\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
+
         public FormTeacher()
         {
             InitializeComponent();
@@ -20,8 +22,6 @@ namespace CourseManagement_Portal
 
         public void CreateTeacher(TeacherClass teacherClass)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("insert into Teacher values(@name,@surname,@birthDate,@profession)", sqlConnection);
@@ -52,8 +52,6 @@ namespace CourseManagement_Portal
 
         public List<TeacherClass> ReadAllTeacher()
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("select * from Teacher", sqlConnection);
@@ -89,8 +87,6 @@ namespace CourseManagement_Portal
 
         public void TeacherUpdate(TeacherClass teacherClass, int id)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("update Teacher set Name=@name,Surname=@surname,BirthDate=@birthDate,Profession=@profession where Id=@id", sqlConnection);
@@ -124,17 +120,11 @@ namespace CourseManagement_Portal
 
                 dgw_Teacher.DataSource = ReadAllTeacher();
             }
-            else
-            {
-            }
         }
 
         public void DeleteTeacher(int id)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-
             sqlConnection.Open();
-
             SqlCommand cmd = new SqlCommand("delete Teacher where Id=@id", sqlConnection);
             cmd.Parameters.AddWithValue("Id", id);
 
@@ -169,29 +159,60 @@ namespace CourseManagement_Portal
 
             cb_crtTeacher.Items.Clear();
             SqlDataReader reader;
+
             sqlConnection.Open();
+
             cmd.Connection = sqlConnection;
             cmd.CommandText = "select Name from Course";
             reader = cmd.ExecuteReader();
+
             while (reader.Read())
             {
                cb_crtTeacher.Items.Add(reader["Name"].ToString());
             }
+
             sqlConnection.Close();
 
             cb_updtTeacher.Items.Clear();
             SqlDataReader reader1;
             sqlConnection.Open();
+
             cmd.Connection = sqlConnection;
             cmd.CommandText = "select Name from Course";
             reader1 = cmd.ExecuteReader();
+
             while (reader1.Read())
             {
                 cb_updtTeacher.Items.Add(reader1["Name"].ToString());
             }
+
             sqlConnection.Close();
         }
-        SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-        SqlCommand cmd = new SqlCommand();
+         SqlCommand cmd = new SqlCommand();
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (textBox1.Text.Length > 1)
+            {
+                dgw_Teacher.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                DataView view = new DataView();
+
+                adapter = new SqlDataAdapter($"select * from Teacher where Name like '{textBox1.Text}%'", sqlConnection);
+
+                sqlConnection.Open();
+                adapter.Fill(ds);
+                view = new DataView(ds.Tables[0]);
+                dgw_Teacher.DataSource = view;
+                sqlConnection.Close();
+            }
+            else if (textBox1.Text.Length <= 1)
+            {
+                dgw_Teacher.DataSource = ReadAllTeacher();
+            }
+        }
     }
 }

@@ -13,6 +13,8 @@ namespace CourseManagement_Portal
 {
     public partial class FormStudent : Form
     {
+        SqlConnection sqlConnection = new SqlConnection(@"Server=.\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
+
         public FormStudent()
         {
             InitializeComponent();
@@ -20,8 +22,6 @@ namespace CourseManagement_Portal
 
         public void CreateStudent(StudentClass studentClass)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("insert into Student values(@name,@surname,@birthdate,@creationTime,@modificationTime)", sqlConnection);
@@ -56,8 +56,6 @@ namespace CourseManagement_Portal
 
         public List<StudentClass> ReadAllStudents()
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("Select * from Student", sqlConnection);
@@ -82,7 +80,6 @@ namespace CourseManagement_Portal
             sqlConnection.Close();
 
             return list;
-
         }
 
         private void dgw_Student_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -94,8 +91,6 @@ namespace CourseManagement_Portal
 
         public void UpdateStudent(StudentClass studentClass, int id)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("update Student set Name=@name,Surname=@surname,BirthDate=@birthdate,CreationTime=@creationTime,ModificationTime=@modificationTime where Id=@id", sqlConnection);
@@ -112,7 +107,6 @@ namespace CourseManagement_Portal
             sqlConnection.Close();
 
             MessageBox.Show("Student updated!");
-
         }
 
         private void btn_updtStudent_Click(object sender, EventArgs e)
@@ -139,8 +133,6 @@ namespace CourseManagement_Portal
 
         public void StudentDelete(int id)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Server=DESKTOP-402TSI6\SQLSERVER; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
-
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("delete from Student where @id=Id", sqlConnection);
@@ -176,6 +168,31 @@ namespace CourseManagement_Portal
         private void FormStudent_Load(object sender, EventArgs e)
         {
             dgw_Student.DataSource = ReadAllStudents();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (textBox1.Text.Length >= 2)
+            {
+                dgw_Student.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                DataView view = new DataView();
+
+                adapter = new SqlDataAdapter($"select * from Student where Name like '{textBox1.Text}%'", sqlConnection);
+
+                sqlConnection.Open();
+                adapter.Fill(ds);
+                view = new DataView(ds.Tables[0]);
+                dgw_Student.DataSource = view;
+                sqlConnection.Close();
+            }
+            else if (textBox1.Text.Length <= 1)
+            {
+                dgw_Student.DataSource = ReadAllStudents();
+            }
         }
     }
 }

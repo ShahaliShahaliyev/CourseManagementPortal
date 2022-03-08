@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="AddStudentToGroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="CommentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -16,7 +19,13 @@
     <Compile Update="FormTeacher.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ThePlanOfCourse.cs">
+    <Compile Update="Groups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="NewGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TeacherAndCourses.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

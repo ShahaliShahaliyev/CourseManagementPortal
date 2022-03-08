@@ -37,8 +37,8 @@ namespace CourseManagement_Portal
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ThePlanOfCourse thePlanOfCourse = new ThePlanOfCourse();
-            thePlanOfCourse.ShowDialog();
+            TeacherAndCourses teacherAndCourses = new TeacherAndCourses();
+            teacherAndCourses.ShowDialog();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -50,6 +50,12 @@ namespace CourseManagement_Portal
         private void MainPage_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Groups groups = new Groups();
+            groups.ShowDialog();
         }
     }
 }

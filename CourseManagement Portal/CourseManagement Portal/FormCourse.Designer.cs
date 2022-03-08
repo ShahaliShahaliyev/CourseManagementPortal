@@ -47,6 +47,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dgw_Course = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_crtCoursePrice)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -249,12 +251,30 @@
             this.dgw_Course.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgw_Course.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dgw_Course.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgw_Course.Location = new System.Drawing.Point(12, 8);
+            this.dgw_Course.Location = new System.Drawing.Point(12, 29);
             this.dgw_Course.Name = "dgw_Course";
             this.dgw_Course.RowTemplate.Height = 25;
-            this.dgw_Course.Size = new System.Drawing.Size(776, 285);
+            this.dgw_Course.Size = new System.Drawing.Size(776, 264);
             this.dgw_Course.TabIndex = 4;
             this.dgw_Course.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgw_Course_CellClick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(216, 5);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(393, 23);
+            this.textBox1.TabIndex = 5;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(198, 21);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Search CourseName...";
             // 
             // FormCourse
             // 
@@ -263,6 +283,8 @@
             this.AutoScroll = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dgw_Course);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -279,6 +301,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_updtCoursePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_Course)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -303,5 +326,6 @@
         private System.Windows.Forms.Button btn_dltCourse;
         private System.Windows.Forms.NumericUpDown nud_crtCoursePrice;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

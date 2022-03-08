@@ -47,6 +47,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_Student)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -60,10 +62,10 @@
             this.dgw_Student.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgw_Student.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dgw_Student.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgw_Student.Location = new System.Drawing.Point(12, 6);
+            this.dgw_Student.Location = new System.Drawing.Point(12, 30);
             this.dgw_Student.Name = "dgw_Student";
             this.dgw_Student.RowTemplate.Height = 25;
-            this.dgw_Student.Size = new System.Drawing.Size(776, 292);
+            this.dgw_Student.Size = new System.Drawing.Size(776, 268);
             this.dgw_Student.TabIndex = 9;
             this.dgw_Student.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgw_Student_CellClick);
             // 
@@ -241,6 +243,24 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Name";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(235, 21);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Search Student With Name";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(253, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(332, 23);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
             // FormStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -248,6 +268,8 @@
             this.AutoScroll = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgw_Student);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -262,6 +284,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -285,5 +308,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtp_crtStudentBD;
         private System.Windows.Forms.DateTimePicker dtp_updtStudentBD;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
