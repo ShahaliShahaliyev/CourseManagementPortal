@@ -151,7 +151,7 @@
             this.groupBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox3.BackgroundImage")));
             this.groupBox3.Controls.Add(this.dgw_StudentAndGroups);
             this.groupBox3.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.groupBox3.ForeColor = System.Drawing.Color.Sienna;
             this.groupBox3.Location = new System.Drawing.Point(3, 266);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(793, 180);
