@@ -13,10 +13,11 @@ namespace CourseManagement_Portal
 {
     public partial class FormCourse : Form
     {
-        SqlConnection sqlConnection = new SqlConnection(@"Server=localhost; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
+        SqlConnection sqlConnection = new SqlConnection(@"Server =localhost\SQLEXPRESS; Database=LoginPage; Trusted_Connection=true;TrustServerCertificate=true;");
 
         public void CreateCourse(CourseClass courseClass)
         {
+
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("insert into Course values(@name,@duration,@price,@creationTime,@modificationTime)", sqlConnection);
@@ -54,7 +55,7 @@ namespace CourseManagement_Portal
         }
 
         public List<CourseClass> ReadAllCourse()
-        {
+        { 
             sqlConnection.Open();
 
             SqlCommand cmd = new SqlCommand("Select * from Course", sqlConnection);

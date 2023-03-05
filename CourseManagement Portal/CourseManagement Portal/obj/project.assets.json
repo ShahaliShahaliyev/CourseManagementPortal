@@ -620,11 +620,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shaha\\Source\\Repos\\CourseManagementPortal\\CourseManagement Portal\\CourseManagement Portal\\CourseManagement Portal.csproj",
+      "projectUniqueName": "C:\\Users\\shaha\\source\\repos\\CourseManagementPortal\\CourseManagement Portal\\CourseManagement Portal\\CourseManagement Portal.csproj",
       "projectName": "CourseManagement Portal",
-      "projectPath": "C:\\Users\\shaha\\Source\\Repos\\CourseManagementPortal\\CourseManagement Portal\\CourseManagement Portal\\CourseManagement Portal.csproj",
+      "projectPath": "C:\\Users\\shaha\\source\\repos\\CourseManagementPortal\\CourseManagement Portal\\CourseManagement Portal\\CourseManagement Portal.csproj",
       "packagesPath": "C:\\Users\\shaha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shaha\\Source\\Repos\\CourseManagementPortal\\CourseManagement Portal\\CourseManagement Portal\\obj\\",
+      "outputPath": "C:\\Users\\shaha\\source\\repos\\CourseManagementPortal\\CourseManagement Portal\\CourseManagement Portal\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\shaha\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -681,7 +681,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
