@@ -13,7 +13,7 @@ namespace CourseManagement_Portal
 {
     public partial class FormCourse : Form
     {
-        SqlConnection sqlConnection = new SqlConnection(@"Server =localhost\SQLEXPRESS; Database=LoginPage; Trusted_Connection=true;TrustServerCertificate=true;");
+        SqlConnection sqlConnection = new SqlConnection(@"Server =localhost\SQLEXPRESS; Database=CourseManagementPortal; Trusted_Connection=true;TrustServerCertificate=true;");
 
         public void CreateCourse(CourseClass courseClass)
         {
